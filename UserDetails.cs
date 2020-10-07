@@ -13,5 +13,10 @@ namespace UserRegistration
         {
             return Regex.IsMatch(fName, FirstName);
         }
+        public string LastName = "^[A-Z][a-z]{3,}?";
+        public bool ValidateLastName(string lName)
+        {
+            return Regex.IsMatch(lName, LastName);
+        }
     }
 }

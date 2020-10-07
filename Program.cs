@@ -21,7 +21,19 @@ namespace UserRegistration
             }
             else
             {
-                Console.WriteLine("Your First Name is {0}", Firstname);
+                Console.WriteLine("Your First Name is {0} \n", Firstname);
+            }
+            Console.WriteLine("Please enter your Last Name");
+            string Lastname = Console.ReadLine();
+            check = Details.ValidateLastName(Lastname);
+            if (check == false)
+            {
+                Console.WriteLine("Invalid input,Please try again. \n First name should start with Capital letter and have minimum 3 alphabets \n");
+                goto EnterFirstName;
+            }
+            else
+            {
+                Console.WriteLine("Your Last Name is {0}", Lastname);
             }
 
         }
