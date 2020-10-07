@@ -51,6 +51,22 @@ namespace UserRegistration
                 Console.WriteLine("Your Email ID is {0}", Emailid);
 
             }
+        EnterMobileNumber:
+
+            Console.WriteLine("Please Enter your mobile number");
+            string mobileNumber = Console.ReadLine();
+            check = Details.ValidatePhoneNumber(mobileNumber);
+            if (check == false)
+            {
+                Console.WriteLine("Please enter a valid mobile Number");
+                Console.WriteLine("Pattern: Country code followed by space and 10 digit phone number");
+                    goto EnterMobileNumber;
+            }
+            else
+            {
+                Console.WriteLine("Your Mobile number is {0} \n", mobileNumber);
+            }
+
 
 
         }
