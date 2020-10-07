@@ -30,7 +30,7 @@ namespace UserRegistration
         {
             return Regex.IsMatch(mobilenumber, MobileNumber);
         }
-        public string Password = "^[A-Z]+.{8,}?";
+        public string Password = "^(?=.*[A-Z])(?=.*[0-9]).{8,}?";
         public bool ValidatePassword(string password)
         {
             return Regex.IsMatch(password, Password);
