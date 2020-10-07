@@ -18,5 +18,11 @@ namespace UserRegistration
         {
             return Regex.IsMatch(lName, LastName);
         }
+        public string EmailID = "^[a-zA-Z0-9]{3,}([.][a-zA-Z0-9]*)[@][a-z]{2,}[.][a-z]{2,3}([.][a-z]{2}";
+
+        public bool ValidateEmailID(string email)
+        {
+            return Regex.IsMatch(email, EmailID);
+        }
     }
 }

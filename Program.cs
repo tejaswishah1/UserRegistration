@@ -35,6 +35,23 @@ namespace UserRegistration
             {
                 Console.WriteLine("Your Last Name is {0}", Lastname);
             }
+            EnterEmailID:
+            Console.Write("Please enter your email ID");
+            string Emailid = Console.ReadLine();
+            check = Details.ValidateEmailID(Emailid);
+            if (check == false)
+            {
+                Console.WriteLine("Enter a valid Email ID");
+                Console.WriteLine("Email Address should be in the format abc.xyz@bl.co.in where xyz and in are optional");
+                goto EnterEmailID;
+            }
+
+        else
+            {
+                Console.WriteLine("Your Email ID is {0}", Emailid);
+
+            }
+
 
         }
     }
