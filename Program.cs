@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading;
-
+using System.Transactions;
 
 namespace UserRegistration
 {
@@ -66,6 +66,22 @@ namespace UserRegistration
             {
                 Console.WriteLine("Your Mobile number is {0} \n", mobileNumber);
             }
+        EnterPassword:
+
+            Console.WriteLine("Please enter your password");
+            string PassWord = Console.ReadLine();
+            check = Details.ValidatePassword(PassWord);
+            if(check == false)
+            {
+                Console.WriteLine("Please enter a valid password");
+                Console.WriteLine("Password must contain at least 8 characters");
+                goto EnterPassword;
+            }
+            else
+            {
+                Console.WriteLine("Your password is {0} \n", PassWord);
+            }
+
 
 
 
