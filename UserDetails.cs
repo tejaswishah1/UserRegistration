@@ -18,7 +18,8 @@ namespace UserRegistration
         {
             return Regex.IsMatch(lName, LastName);
         }
-        public string EmailID = "^[a-zA-Z0-9]{3,}([.][a-zA-Z0-9]*)[@][a-z]{2,}[.][a-z]{2,3}([.][a-z]{2}";
+        public string EmailID = "^[a-zA-Z0-9]{3,}(.[a-zA-Z0-9]{1,}){0,}@[a-z]{2,}[.]{1}[a-z]{2,3}(.[a-z]{2,3}){0,}$";
+        
 
         public bool ValidateEmailID(string email)
         {
@@ -30,7 +31,8 @@ namespace UserRegistration
         {
             return Regex.IsMatch(mobilenumber, MobileNumber);
         }
-        public string Password = "^(?=.*[A-Z])(?=.*[0-9])(?=.[!@#$%^&*:-_]{1}).{8,}?";
+        public string Password = "((?=^.*[0-9].*$)(?=^.*[A-Z].*$)(?=^[a-zA-Z0-9]*[!@#$%&*+_]{1}[a-zA-Z0-9]*$).{8,})";
+ 
         public bool ValidatePassword(string password)
         {
             return Regex.IsMatch(password, Password);

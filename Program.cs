@@ -23,20 +23,21 @@ namespace UserRegistration
             {
                 Console.WriteLine("Your First Name is {0} \n", Firstname);
             }
+            Lastname:
             Console.WriteLine("Please enter your Last Name");
             string Lastname = Console.ReadLine();
             check = Details.ValidateLastName(Lastname);
             if (check == false)
             {
                 Console.WriteLine("Invalid input,Please try again. \n First name should start with Capital letter and have minimum 3 alphabets \n");
-                goto EnterFirstName;
+                goto Lastname;
             }
             else
             {
                 Console.WriteLine("Your Last Name is {0}", Lastname);
             }
             EnterEmailID:
-            Console.Write("Please enter your email ID");
+            Console.Write("Please enter your email ID \n");
             string Emailid = Console.ReadLine();
             check = Details.ValidateEmailID(Emailid);
             if (check == false)
@@ -74,7 +75,7 @@ namespace UserRegistration
             if(check == false)
             {
                 Console.WriteLine("Please enter a valid password");
-                Console.WriteLine("Password must contain at least 8 characters");
+             
                 goto EnterPassword;
             }
             else
