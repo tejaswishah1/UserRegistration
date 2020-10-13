@@ -1,0 +1,9 @@
+C:\Users\HP\Desktop\UserRegistration\obj\Debug\netcoreapp2.0\UserRegistration.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\UserRegistration\bin\Debug\netcoreapp2.0\UserRegistration.deps.json
+C:\Users\HP\Desktop\UserRegistration\bin\Debug\netcoreapp2.0\UserRegistration.runtimeconfig.json
+C:\Users\HP\Desktop\UserRegistration\bin\Debug\netcoreapp2.0\UserRegistration.runtimeconfig.dev.json
+C:\Users\HP\Desktop\UserRegistration\bin\Debug\netcoreapp2.0\UserRegistration.dll
+C:\Users\HP\Desktop\UserRegistration\bin\Debug\netcoreapp2.0\UserRegistration.pdb
+C:\Users\HP\Desktop\UserRegistration\obj\Debug\netcoreapp2.0\UserRegistration.dll
+C:\Users\HP\Desktop\UserRegistration\obj\Debug\netcoreapp2.0\UserRegistration.pdb
+C:\Users\HP\Desktop\UserRegistration\obj\Debug\netcoreapp2.0\UserRegistration.genruntimeconfig.cache

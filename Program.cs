@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Threading;
 using System.Transactions;
 
@@ -10,33 +11,74 @@ namespace UserRegistration
         {
             Console.WriteLine("Welcome to User Registration");
             UserDetails Details = new UserDetails();
-            EnterFirstName:
+   
             Console.WriteLine("Please enter your First Name");
             string Firstname = Console.ReadLine();
             bool check = Details.ValidateFirstName(Firstname);
-            if (check == false)
+            bool result;
+            result = Char.IsUpper(Firstname, 0);
+            try
             {
-                Console.WriteLine("Invalid input,Please try again. \n First name should start with Capital letter and have minimum 3 alphabets \n");
-                goto EnterFirstName;
+                if (result == false)
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.FIRST_LETTER_NOT_CAPITAL, "Kindly make the first letter of string capital");
+                    
+                }
+               else if (Firstname.Length < 4)
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.STRING_LENGTH_NOT_MATCHED, "Name should be more than 3 characters");
+                }
+              else  if (Firstname.Equals(string.Empty))
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY_MESSAGE, "Please enter a value");
+                }
+                else
+                {
+                    Console.WriteLine("Your First Name is {0} \n", Firstname);
+                    
+                }
             }
-            else
+            catch(Exception ex)
             {
-                Console.WriteLine("Your First Name is {0} \n", Firstname);
+                Console.WriteLine("Exception : {0}", ex.Message);
             }
-            Lastname:
+          
+           
+            
+            
+          
             Console.WriteLine("Please enter your Last Name");
             string Lastname = Console.ReadLine();
             check = Details.ValidateLastName(Lastname);
-            if (check == false)
+            result = Char.IsUpper(Lastname, 0);
+            try
             {
-                Console.WriteLine("Invalid input,Please try again. \n First name should start with Capital letter and have minimum 3 alphabets \n");
-                goto Lastname;
+                if (result == false)
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.FIRST_LETTER_NOT_CAPITAL, "Kindly make the first letter of string capital");
+
+                }
+                else if (Lastname.Length < 4)
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.STRING_LENGTH_NOT_MATCHED, "Name should be more than 3 characters");
+                }
+                else if (Lastname.Equals(string.Empty))
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY_MESSAGE, "Please enter a value");
+                }
+                else
+                {
+                    Console.WriteLine("Your Last Name is {0} \n", Lastname);
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Your Last Name is {0}", Lastname);
+                Console.WriteLine("Exception : {0}", ex.Message);
             }
-            EnterEmailID:
+
+
+        EnterEmailID:
             Console.Write("Please enter your email ID \n");
             string Emailid = Console.ReadLine();
             check = Details.ValidateEmailID(Emailid);
@@ -57,26 +99,30 @@ namespace UserRegistration
             Console.WriteLine("Please Enter your mobile number");
             string mobileNumber = Console.ReadLine();
             check = Details.ValidatePhoneNumber(mobileNumber);
-            if (check == false)
+            try
             {
-                Console.WriteLine("Please enter a valid mobile Number");
-                Console.WriteLine("Pattern: Country code followed by space and 10 digit phone number");
-                    goto EnterMobileNumber;
+                if (mobileNumber.Length < 11)
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.STRING_LENGTH_NOT_MATCHED, "Phone number should be at least 12 characters");
+                }
+                else
+                {
+                    Console.WriteLine("Your mobile number is: {0}", mobileNumber);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Your Mobile number is {0} \n", mobileNumber);
+                Console.WriteLine("Exception message: {0}", ex.Message);
             }
-        EnterPassword:
+
+         
 
             Console.WriteLine("Please enter your password");
             string PassWord = Console.ReadLine();
             check = Details.ValidatePassword(PassWord);
             if(check == false)
             {
-                Console.WriteLine("Please enter a valid password");
-             
-                goto EnterPassword;
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_PASSOWRD, "Passowrd should contain one character,one upper case,one lower case and numericals, and should be 8 characters at least");
             }
             else
             {

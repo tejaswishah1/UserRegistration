@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "Ed74sXm8r8+A2HF9/ooPziyvpIRLR7dM1jQLRdA8vOjC6qxSXZDjzq2oGYQjvw3GqVmEb1GIWsGbwhI5e/d+rQ==",
+  "dgSpecHash": "WyDgd3+dkEzNkEbzA9bW2avwT4kMTo+X2lG3C6TNPt1irtGD0b0YPKYzMnFtPlCTNYK1C/e9Ycx4nFSl/uYy3w==",
   "success": true,
   "projectFilePath": "C:\\Users\\HP\\Desktop\\UserRegistration\\UserRegistration.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
