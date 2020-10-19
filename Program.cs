@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Transactions;
 
@@ -10,78 +13,122 @@ namespace UserRegistration
         {
             Console.WriteLine("Welcome to User Registration");
             UserDetails Details = new UserDetails();
-            EnterFirstName:
+
             Console.WriteLine("Please enter your First Name");
             string Firstname = Console.ReadLine();
-            bool check = Details.ValidateFirstName(Firstname);
-            if (check == false)
+            List<string> FirstName = new List<string>() { Firstname };
+            try
             {
-                Console.WriteLine("Invalid input,Please try again. \n First name should start with Capital letter and have minimum 3 alphabets \n");
-                goto EnterFirstName;
+                if (FirstName.Exists(a => a.Length < 4))
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.STRING_LENGTH_NOT_MATCHED, "Name should be more than 3 characters");
+                }
+                else if (FirstName.Exists(a => a.Equals("")))
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY_MESSAGE, "Please enter a value");
+                }
+                else
+                {
+                    Console.WriteLine("Your First Name is {0} \n", Firstname);
+
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Your First Name is {0} \n", Firstname);
+                Console.WriteLine("Exception : {0}", ex.Message);
             }
+
             Console.WriteLine("Please enter your Last Name");
             string Lastname = Console.ReadLine();
-            check = Details.ValidateLastName(Lastname);
-            if (check == false)
+           
+            List<string> LastName = new List<string>() { Lastname };
+            try
             {
-                Console.WriteLine("Invalid input,Please try again. \n First name should start with Capital letter and have minimum 3 alphabets \n");
-                goto EnterFirstName;
+            
+            if (LastName.Exists(a => a.Length < 4))
+                    {
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.STRING_LENGTH_NOT_MATCHED, "Name should be more than 3 characters");
+            }
+            else if (LastName.Exists(a => a.Equals("")))
+            {
+                throw new UserRegistrationException(UserRegistrationException.ExceptionType.EMPTY_MESSAGE, "Please enter a value");
             }
             else
             {
-                Console.WriteLine("Your Last Name is {0}", Lastname);
+                Console.WriteLine("Your Last Name is {0} \n", Lastname);
+
             }
-            EnterEmailID:
-            Console.Write("Please enter your email ID");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception : {0}", ex.Message);
+            }
+
+
+            Console.Write("Please enter your email ID \n");
             string Emailid = Console.ReadLine();
-            check = Details.ValidateEmailID(Emailid);
-            if (check == false)
+            List<string> MailID = new List<string>() { Emailid };
+        
+            if (MailID.TrueForAll(a=>a.Contains("^[a-zA-Z0-9]{3,}([.][a-zA-Z0-9]*)[@][a-z]{2,}[.][a-z]{2,3}([.][a-z]{2}")))
+            {
+                Console.WriteLine("Your Email ID is {0}", Emailid);
+               
+            }
+
+            else
             {
                 Console.WriteLine("Enter a valid Email ID");
                 Console.WriteLine("Email Address should be in the format abc.xyz@bl.co.in where xyz and in are optional");
-                goto EnterEmailID;
-            }
-
-        else
-            {
-                Console.WriteLine("Your Email ID is {0}", Emailid);
 
             }
-        EnterMobileNumber:
+
 
             Console.WriteLine("Please Enter your mobile number");
             string mobileNumber = Console.ReadLine();
-            check = Details.ValidatePhoneNumber(mobileNumber);
-            if (check == false)
+            List<string> PhoneNumber = new List<string>() { mobileNumber };
+
+
+            try
             {
-                Console.WriteLine("Please enter a valid mobile Number");
-                Console.WriteLine("Pattern: Country code followed by space and 10 digit phone number");
-                    goto EnterMobileNumber;
+                if (PhoneNumber.Exists(a=>a.Length<10))
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.STRING_LENGTH_NOT_MATCHED, "Phone number should be at least 12 characters");
+                }
+                else if (PhoneNumber.Exists(a=>a.Contains("^[1-5][6-9][0-9]{10}")))
+                {
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_CODE, "You have entered an invalid code");
+                }
+                else
+                {
+                    Console.WriteLine("Your mobile number is: {0}", mobileNumber);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Your Mobile number is {0} \n", mobileNumber);
+                Console.WriteLine("Exception message: {0}", ex.Message);
             }
-        EnterPassword:
+
+
 
             Console.WriteLine("Please enter your password");
             string PassWord = Console.ReadLine();
-            check = Details.ValidatePassword(PassWord);
-            if(check == false)
+            List<string> Password = new List<string>() { PassWord };
+            try
             {
-                Console.WriteLine("Please enter a valid password");
-                Console.WriteLine("Password must contain at least 8 characters");
-                goto EnterPassword;
-            }
-            else
-            {
-                Console.WriteLine("Your password is {0} \n", PassWord);
-            }
+                if (Password.Exists(a => a.Contains("^(?=.*[A-Z])(?=.*[0-9])(?=.[!@#$%^&*:-_]{1}).{8,}?")))
+                {
+                    Console.WriteLine("Your password is {0} \n", PassWord);
+                }
+                else
+                {
 
+                    throw new UserRegistrationException(UserRegistrationException.ExceptionType.INVALID_PASSOWRD, "Passowrd should contain one character,one upper case,one lower case and numericals, and should be 8 characters at least");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception message: {0}", ex.Message);
+            }
 
 
 
